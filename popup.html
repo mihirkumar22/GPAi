@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="page1Controller.js"></script>
+    <script src="page2Controller.js"></script>
+    <script src="page3Controller.js"></script>
+    <script src="main.js"></script>
+    <script src="node_modules/chart.js/dist/chart.umd.js"></script>
+    <nav id="main-nav">
+        <div id="page-1-switch" class="nav-button active">GPA Calculator</div>
+        <div id="page-2-switch" class="nav-button">Progression Chart</div>
+        <div id="page-3-switch" class="nav-button">Information & Settings</div>
+        <div id="page-4-switch" class="nav-button">
+            <span class="stacked-text">AI</span>
+            <span class="stacked-text">Assistant</span>
+        </div>
+    </nav>
+    <nav id="year-nav" class="year-nav">
+        <div id="year-nav-1" class="year-button">Freshman</div>
+        <div id="year-nav-2" class="year-button">Sophomore</div>
+        <div id="year-nav-3" class="year-button">Junior</div>
+        <div id="year-nav-4" class="year-button">Senior</div>
+    </nav>
+</head>
+
+<body>
+    <div id="page-1-content" class="page-content">
+        <div id="page-1-header" class="page-header">
+            <h1 id="page-1-header-text">GPA Calculator</h1>
+            <div id="page-1-header-toggle">Show GPA Table</div>
+        </div>
+        <div class="break"></div>
+        <div id="hs-GPA-container">
+            <div id="hs-w-GPA-display" class="hs-GPA-display">
+                <span class="stacked-text">HS Cumulative Weighted GPA:</span>
+                <b id="b-hs-w-GPA" class="stacked-text">0</b>
+            </div>
+            <div id="hs-uw-GPA-display" class="hs-GPA-display">
+                <span class="stacked-text">HS Cumulative Unweighted GPA:</span>
+                <b id="b-hs-uw-GPA" class="stacked-text">0</b>
+            </div>
+        </div>
+        <div id="page-1-reg" class="page-1-section active">
+            <div id="yearsContainer">
+                <div id="default-text" class="active">
+                    Select a grade level using the navigation bar above.
+                    <div class="break"></div>
+                    <img id="logo" src="/images/GPAi-logo.png">
+                </div>
+                <div id="year-content-1" class="year-content">
+                    <div class="year-title" id="year-title-1">Freshman Year</div>
+                    <div id="y-1-GPA-container" class="y-GPA-container">
+                        <div id="y-1-w-GPA-display" class="y-GPA-display">
+                            <span class="stacked-text">Weighted GPA:</span>
+                            <b id="b-y-1-w-GPA" class="y-w-GPA stacked-text">0</b>
+                        </div>
+                        <div id="y-1-uw-GPA-display" class="y-GPA-display">
+                            <span class="stacked-text">Unweighted GPA:</span>
+                            <b id="b-y-1-uw-GPA" class="y-uw-GPA stacked-text">0</b>
+                        </div>
+                    </div>
+                    <div id="y-1-terms-container" class="terms-container">
+                        <div id="y-1-t-1" class="term-container">
+                            <div id="y-1-t-1-header" class="term-header">
+                                <p class="term-text left-text">Term 1</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-1-t-1-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-1-t-1-content" class="term-content">
+                                <div id="y-1-t-1-GPA-container" class="t-GPA-container">
+                                    <div id="y-1-t-1-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-1-t-1-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-1-t-1-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-1-t-1-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-1-t-1-add-course" class="add-course">Add Course</div>
+                                <div id="y-1-t-1-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-1-t-1-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-1-t-2" class="term-container">
+                            <div id="y-1-t-2-header" class="term-header">
+                                <p class="term-text left-text">Term 2</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-1-t-2-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-1-t-2-content" class="term-content">
+                                <div id="y-1-t-2-GPA-container" class="t-GPA-container">
+                                    <div id="y-1-t-2-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-1-t-2-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-1-t-2-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-1-t-2-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-1-t-2-add-course" class="add-course">Add Course</div>
+                                <div id="y-1-t-2-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-1-t-2-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-1-t-3" class="term-container">
+                            <div id="y-1-t-3-header" class="term-header">
+                                <p class="term-text left-text">Term 3</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-1-t-3-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-1-t-3-content" class="term-content">
+                                <div id="y-1-t-3-GPA-container" class="t-GPA-container">
+                                    <div id="y-1-t-3-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-1-t-3-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-1-t-3-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-1-t-3-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-1-t-3-add-course" class="add-course">Add Course</div>
+                                <div id="y-1-t-3-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-1-t-3-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-1-t-4" class="term-container">
+                            <div id="y-1-t-4-header" class="term-header">
+                                <p class="term-text left-text">Term 4</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-1-t-4-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-1-t-4-content" class="term-content">
+                                <div id="y-1-t-4-GPA-container" class="t-GPA-container">
+                                    <div id="y-1-t-4-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-1-t-4-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-1-t-4-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-1-t-4-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-1-t-4-add-course" class="add-course">Add Course</div>
+                                <div id="y-1-t-4-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-1-t-4-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="year-content-2" class="year-content">
+                    <div class="year-title" id="year-title-2">Sophomore Year</div>
+                    <div id="y-2-GPA-container" class="y-GPA-container">
+                        <div id="y-2-w-GPA-display" class="y-GPA-display">
+                            <span class="stacked-text">Weighted GPA:</span>
+                            <b id="b-y-2-w-GPA" class="y-w-GPA stacked-text">0</b>
+                        </div>
+                        <div id="y-2-uw-GPA-display" class="y-GPA-display">
+                            <span class="stacked-text">Unweighted GPA:</span>
+                            <b id="b-y-2-uw-GPA" class="y-uw-GPA stacked-text">0</b>
+                        </div>
+                    </div>
+                    <div id="y-2-terms-container" class="terms-container">
+                        <div id="y-2-t-1" class="term-container">
+                            <div id="y-2-t-1-header" class="term-header">
+                                <p class="term-text left-text">Term 1</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-2-t-1-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-2-t-1-content" class="term-content">
+                                <div id="y-2-t-1-GPA-container" class="t-GPA-container">
+                                    <div id="y-2-t-1-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-2-t-1-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-2-t-1-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-2-t-1-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-2-t-1-add-course" class="add-course">Add Course</div>
+                                <div id="y-2-t-1-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-2-t-1-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-2-t-2" class="term-container">
+                            <div id="y-2-t-2-header" class="term-header">
+                                <p class="term-text left-text">Term 2</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-2-t-2-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-2-t-2-content" class="term-content">
+                                <div id="y-2-t-2-GPA-container" class="t-GPA-container">
+                                    <div id="y-2-t-2-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-2-t-2-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-2-t-2-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-2-t-2-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-2-t-2-add-course" class="add-course">Add Course</div>
+                                <div id="y-2-t-2-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-2-t-2-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-2-t-3" class="term-container">
+                            <div id="y-2-t-3-header" class="term-header">
+                                <p class="term-text left-text">Term 3</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-2-t-3-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-2-t-3-content" class="term-content">
+                                <div id="y-2-t-3-GPA-container" class="t-GPA-container">
+                                    <div id="y-2-t-3-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-2-t-3-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-2-t-3-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-2-t-3-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-2-t-3-add-course" class="add-course">Add Course</div>
+                                <div id="y-2-t-3-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-2-t-3-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-2-t-4" class="term-container">
+                            <div id="y-2-t-4-header" class="term-header">
+                                <p class="term-text left-text">Term 4</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-2-t-4-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-2-t-4-content" class="term-content">
+                                <div id="y-2-t-4-GPA-container" class="t-GPA-container">
+                                    <div id="y-2-t-4-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-2-t-4-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-2-t-4-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-2-t-4-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-2-t-4-add-course" class="add-course">Add Course</div>
+                                <div id="y-2-t-4-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-2-t-4-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="year-content-3" class="year-content">
+                    <div class="year-title" id="year-title-3">Junior Year</div>
+                    <div id="y-3-GPA-container" class="y-GPA-container">
+                        <div id="y-3-w-GPA-display" class="y-GPA-display">
+                            <span class="stacked-text">Weighted GPA:</span>
+                            <b id="b-y-3-w-GPA" class="y-w-GPA stacked-text">0</b>
+                        </div>
+                        <div id="y-3-uw-GPA-display" class="y-GPA-display">
+                            <span class="stacked-text">Unweighted GPA:</span>
+                            <b id="b-y-3-uw-GPA" class="y-uw-GPA stacked-text">0</b>
+                        </div>
+                    </div>
+                    <div id="y-3-terms-container" class="terms-container">
+                        <div id="y-3-t-1" class="term-container">
+                            <div id="y-3-t-1-header" class="term-header">
+                                <p class="term-text left-text">Term 1</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-3-t-1-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-3-t-1-content" class="term-content">
+                                <div id="y-3-t-1-GPA-container" class="t-GPA-container">
+                                    <div id="y-3-t-1-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-3-t-1-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-3-t-1-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-3-t-1-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-3-t-1-add-course" class="add-course">Add Course</div>
+                                <div id="y-3-t-1-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-3-t-1-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-3-t-2" class="term-container">
+                            <div id="y-3-t-2-header" class="term-header">
+                                <p class="term-text left-text">Term 2</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-3-t-2-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-3-t-2-content" class="term-content">
+                                <div id="y-3-t-2-GPA-container" class="t-GPA-container">
+                                    <div id="y-3-t-2-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-3-t-2-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-3-t-2-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-3-t-2-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-3-t-2-add-course" class="add-course">Add Course</div>
+                                <div id="y-3-t-2-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-3-t-2-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-3-t-3" class="term-container">
+                            <div id="y-3-t-3-header" class="term-header">
+                                <p class="term-text left-text">Term 3</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-3-t-3-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-3-t-3-content" class="term-content">
+                                <div id="y-3-t-3-GPA-container" class="t-GPA-container">
+                                    <div id="y-3-t-3-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-3-t-3-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-3-t-3-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-3-t-3-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-3-t-3-add-course" class="add-course">Add Course</div>
+                                <div id="y-3-t-3-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-3-t-3-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-3-t-4" class="term-container">
+                            <div id="y-3-t-4-header" class="term-header">
+                                <p class="term-text left-text">Term 4</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-3-t-4-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-3-t-4-content" class="term-content">
+                                <div id="y-3-t-4-GPA-container" class="t-GPA-container">
+                                    <div id="y-3-t-4-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-3-t-4-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-3-t-4-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-3-t-4-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-3-t-4-add-course" class="add-course">Add Course</div>
+                                <div id="y-3-t-4-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-3-t-4-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="year-content-4" class="year-content">
+                    <div class="year-title" id="year-title-4">Senior Year</div>
+                    <div id="y-4-GPA-container" class="y-GPA-container">
+                        <div id="y-4-w-GPA-display" class="y-GPA-display">
+                            <span class="stacked-text">Weighted GPA:</span>
+                            <b id="b-y-4-w-GPA" class="y-w-GPA stacked-text">0</b>
+                        </div>
+                        <div id="y-4-uw-GPA-display" class="y-GPA-display">
+                            <span class="stacked-text">Unweighted GPA:</span>
+                            <b id="b-y-4-uw-GPA" class="y-uw-GPA stacked-text">0</b>
+                        </div>
+                    </div>
+                    <div id="y-4-terms-container" class="terms-container">
+                        <div id="y-4-t-1" class="term-container">
+                            <div id="y-4-t-1-header" class="term-header">
+                                <p class="term-text left-text">Term 1</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-4-t-1-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-4-t-1-content" class="term-content">
+                                <div id="y-4-t-1-GPA-container" class="t-GPA-container">
+                                    <div id="y-4-t-1-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-4-t-1-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-4-t-1-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-4-t-1-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-4-t-1-add-course" class="add-course">Add Course</div>
+                                <div id="y-4-t-1-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-4-t-1-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-4-t-2" class="term-container">
+                            <div id="y-4-t-2-header" class="term-header">
+                                <p class="term-text left-text">Term 2</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-4-t-2-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-4-t-2-content" class="term-content">
+                                <div id="y-4-t-2-GPA-container" class="t-GPA-container">
+                                    <div id="y-4-t-2-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-4-t-2-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-4-t-2-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-4-t-2-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-4-t-2-add-course" class="add-course">Add Course</div>
+                                <div id="y-4-t-2-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-4-t-2-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-4-t-3" class="term-container">
+                            <div id="y-4-t-3-header" class="term-header">
+                                <p class="term-text left-text">Term 3</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-4-t-3-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-4-t-3-content" class="term-content">
+                                <div id="y-4-t-3-GPA-container" class="t-GPA-container">
+                                    <div id="y-4-t-3-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-4-t-3-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-4-t-3-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-4-t-3-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-4-t-3-add-course" class="add-course">Add Course</div>
+                                <div id="y-4-t-3-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-4-t-3-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="y-4-t-4" class="term-container">
+                            <div id="y-4-t-4-header" class="term-header">
+                                <p class="term-text left-text">Term 4</p>
+                                <img src="images/down-arrow.png" alt="Arrow" id="y-4-t-4-term-arrow" class="term-arrow">
+                            </div>
+                            <div id="y-4-t-4-content" class="term-content">
+                                <div id="y-4-t-4-GPA-container" class="t-GPA-container">
+                                    <div id="y-4-t-4-w-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Weighted GPA:</span>
+                                        <b id="b-y-4-t-4-w-GPA" class="stacked-text">0</b>
+                                    </div>
+                                    <div id="y-4-t-4-uw-GPA" class="t-GPA-display">
+                                        <span class="stacked-text">Unweighted GPA:</span>
+                                        <b id="b-y-4-t-4-uw-GPA" class="stacked-text">0</b>
+                                    </div>
+                                </div>
+                                <div id="y-4-t-4-add-course" class="add-course">Add Course</div>
+                                <div id="y-4-t-4-instructions" class="instructions">
+                                    <div id="grade-label" class="grade label">Grade</div>
+                                    <div id="credit-label" class="credit label">Credits</div>
+                                    <div id="weighted-label" class="weighted label">Weighted?</div>
+                                </div>
+                                <div id="y-4-t-4-courses-container" class="courses-container">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="page-1-GPAs-only" class="page-1-section">
+            <div id="table-container">
+                <table id="table">
+                    <tr id="i-year-headers-row">
+                        <td class="col1 empty"></td>
+                        <td colspan="4" class="i-year-header">Freshman</td>
+                        <td colspan="4" class="i-year-header">Sophomore</td>
+                        <td colspan="4" class="i-year-header">Junior</td>
+                        <td colspan="4" class="i-year-header">Senior</td>
+                    </tr>
+                    <tr id="i-year-w-GPAs-row" class="i-w-GPAs-row">
+                        <td class="col1"> <img class='weightedSymbol-css' src='images/weightedSymbol.png'></img> </td>
+                        <td id="i-y-1-w-GPA-display" colspan="4"></td>
+                        <td id="i-y-2-w-GPA-display" colspan="4"></td>
+                        <td id="i-y-3-w-GPA-display" colspan="4"></td>
+                        <td id="i-y-4-w-GPA-display" colspan="4"></td>
+                    </tr>
+                    <tr id="i-year-uw-GPAs-row" class="i-uw-GPAs-row">
+                        <td class="col1"> <img class='unweightedSymbol-css' src='images/unweightedSymbol.png'></img>
+                        </td>
+                        <td id="i-y-1-uw-GPA-display" colspan="4"></td>
+                        <td id="i-y-2-uw-GPA-display" colspan="4"></td>
+                        <td id="i-y-3-uw-GPA-display" colspan="4"></td>
+                        <td id="i-y-4-uw-GPA-display" colspan="4"></td>
+                    </tr>
+                    <tr id="i-term-headers-row">
+                        <td class="col1 empty"></td>
+                        <td class="line-left">T1</td>
+                        <td>T2</td>
+                        <td>T3</td>
+                        <td>T4</td>
+                        <td class="line-left">T1</td>
+                        <td>T2</td>
+                        <td>T3</td>
+                        <td>T4</td>
+                        <td class="line-left">T1</td>
+                        <td>T2</td>
+                        <td>T3</td>
+                        <td>T4</td>
+                        <td class="line-left">T1</td>
+                        <td>T2</td>
+                        <td>T3</td>
+                        <td>T4</td>
+                    </tr>
+                    <tr id="i-term-w-GPAs-row" class="i-w-GPAs-row">
+                        <td class="col1"> <img class='weightedSymbol-css' src='images/weightedSymbol.png'></img> </td>
+                        <td id="i-y-1-t-1-w-GPA-display" class="line-left"></td>
+                        <td id="i-y-1-t-2-w-GPA-display"></td>
+                        <td id="i-y-1-t-3-w-GPA-display"></td>
+                        <td id="i-y-1-t-4-w-GPA-display"></td>
+                        <td id="i-y-2-t-1-w-GPA-display" class="line-left"></td>
+                        <td id="i-y-2-t-2-w-GPA-display"></td>
+                        <td id="i-y-2-t-3-w-GPA-display"></td>
+                        <td id="i-y-2-t-4-w-GPA-display"></td>
+                        <td id="i-y-3-t-1-w-GPA-display" class="line-left"></td>
+                        <td id="i-y-3-t-2-w-GPA-display"></td>
+                        <td id="i-y-3-t-3-w-GPA-display"></td>
+                        <td id="i-y-3-t-4-w-GPA-display"></td>
+                        <td id="i-y-4-t-1-w-GPA-display" class="line-left"></td>
+                        <td id="i-y-4-t-2-w-GPA-display"></td>
+                        <td id="i-y-4-t-3-w-GPA-display"></td>
+                        <td id="i-y-4-t-4-w-GPA-display"></td>
+                    </tr>
+                    <tr id="i-term-uw-GPAs-row" class="i-uw-GPAs-row">
+                        <td class="col1"> <img class='unweightedSymbol-css' src='images/unweightedSymbol.png'></img>
+                        </td>
+                        <td id="i-y-1-t-1-uw-GPA-display" class="line-left"></td>
+                        <td id="i-y-1-t-2-uw-GPA-display"></td>
+                        <td id="i-y-1-t-3-uw-GPA-display"></td>
+                        <td id="i-y-1-t-4-uw-GPA-display"></td>
+                        <td id="i-y-2-t-1-uw-GPA-display" class="line-left"></td>
+                        <td id="i-y-2-t-2-uw-GPA-display"></td>
+                        <td id="i-y-2-t-3-uw-GPA-display"></td>
+                        <td id="i-y-2-t-4-uw-GPA-display"></td>
+                        <td id="i-y-3-t-1-uw-GPA-display" class="line-left"></td>
+                        <td id="i-y-3-t-2-uw-GPA-display"></td>
+                        <td id="i-y-3-t-3-uw-GPA-display"></td>
+                        <td id="i-y-3-t-4-uw-GPA-display"></td>
+                        <td id="i-y-4-t-1-uw-GPA-display" class="line-left"></td>
+                        <td id="i-y-4-t-2-uw-GPA-display"></td>
+                        <td id="i-y-4-t-3-uw-GPA-display"></td>
+                        <td id="i-y-4-t-4-uw-GPA-display"></td>
+                    </tr>
+                </table>
+                <div id="table-download-button">
+                    <img id="download-icon" src="images/download-icon.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page-2-content" class="page-content">
+        <h1 class="page-header" id="page-2-header">Progression Chart</h1>
+        <div class="break"></div>
+        <div id="chart-caption">Click the labels to show/hide datasets</div>
+        <div>
+            <canvas id="myChart" style="width: 576px;"></canvas>
+        </div>
+    </div>
+    <div id="page-3-content" class="page-content">
+        <h1 id="page-3-header" class="page-header">Information Page</h1>
+        <div class="break horizontal-line" style="top: 1px;"></div>
+        <div id="info-GPA-calculator" class="info-div">
+            <h3 class="info-header">GPA Calculator</h3>
+            <div class="info-dropdown-header" id="info-d-h-1">
+                <div class="i-d-h-text">How do I use this calculator?</div>
+                <img class="i-d-h-arrow" src="images/down-arrow.png">
+            </div>
+            <div class="info-dropdown-content" id="info-d-c-1">
+                <p class="info-p">The GPA Calculator is broken down into the the four high school grade levels. First,
+                    select the grade level using the nav-bar at the top of the screen. Next, you
+                    can enter any of the four terms from that grade level by clicking the dropdown.</p>
+                <div class="break"></div>
+                <p class="info-p">Now, click the add course button to start inputting data. Enter your final grade from
+                    that course; either letter or percentage form. Enter the number of credits the class is worth, and
+                    check the box if the class is weighted. If you want to remove a course, click the remove button.</p>
+                <div class="break"></div>
+                <p class="info-p">Your GPAs will be calculated in real time as you input data- no need for a submit
+                    button!</p>
+            </div>
+            <div class="info-dropdown-header" id="info-d-h-2">
+                <div class="i-d-h-text">How does this calculator work?</div>
+                <img class="i-d-h-arrow" src="images/down-arrow.png">
+            </div>
+            <div class="info-dropdown-content" id="info-d-c-2">
+                <p class="info-p">The GPA calculations are based on official FCPS documentation. To learn more about how
+                    FCPS calculates GPA, visit <a
+                        href="https://campussuite-storage.s3.amazonaws.com/prod/33903/86de7fb0-3a18-11e6-b537-22000bd8490f/601354/1a9dbcb0-6576-11e6-8113-22000bd8490f/file/UnderstandingGPAs.pdf">this
+                        link</a>, or search "Understanding GPAs" on the FCPS website.</p>
+            </div>
+            <div class="info-dropdown-header" id="info-d-h-3">
+                <div class="i-d-h-text">How do I know if a class is weighted?</div>
+                <img class="i-d-h-arrow" src="images/down-arrow.png">
+            </div>
+            <div class="info-dropdown-content" id="info-d-c-3">
+                <p class="info-p">FCPS weighs Honors, AP, and IB classes the same. To
+                    check if your class is weighted, visit <a
+                        href="https://campussuite-storage.s3.amazonaws.com/prod/33903/86de7fb0-3a18-11e6-b537-22000bd8490f/2707704/b89cd030-9088-11ee-9997-0edab323f7bb/file/HS_CourseGuide_2024-25.pdf">this
+                        link</a>, or search for the FCPS High School Course Guide, and scroll to the bottom pages.</p>
+            </div>
+            <div class="info-dropdown-header" id="info-d-h-4">
+                <div class="i-d-h-text">How can I save my current GPA data?</div>
+                <img class="i-d-h-arrow" src="images/down-arrow.png">
+            </div>
+            <div class="info-dropdown-content" id="info-d-c-4">
+                <p class="info-p">All of your inputted values are saved to your Google Account, meaning all the
+                    calculated GPAs are saved as well.</p>
+                <div class="break"></div>
+                <p class="info-p">However, if you would like to download the calculated GPAs, click the download button
+                    next to the GPA table or at the bottom of this page. The data will be saved as a CSV file which you can
+                    use to import into Google Sheets or Excel.</p>
+            </div>
+        </div>
+        <div class="break horizontal-line"></div>
+        <div id="info-GPA-chart" class="info-div">
+            <h3 class="info-header">Progression Chart</h3>
+            <div class="info-dropdown-header" id="info-d-h-4">
+                <div class="i-d-h-text">How do I use the Progression Chart?</div>
+                <img class="i-d-h-arrow" src="images/down-arrow.png">
+            </div>
+            <dv class="info-dropdown-content" id="info-d-c-4">
+                <div class="info-p">It's easy! Calculated GPAs from the GPA Calculator are automatically transferred and
+                    graphed on the GPA Chart. Click the labels at the top of the chart to hide datasets and further
+                    analyze your GPA progression.</div>
+            </dv>
+        </div>
+        <div class="break horizontal-line"></div>
+        <div id="info-AI-Assistant" class="info-div">
+            <h3 class="info-header">AI Assistant</h3>
+            <div class="info-dropdown-header" id="info-d-h-5">
+                <div class="i-d-h-text">How does the AI Assistant work?</div>
+                <img class="i-d-h-arrow" src="images/down-arrow.png">
+            </div>
+            <div class="info-dropdown-content" id="info-d-c-5">
+                <div class="info-p">The GPAi Assistant is a trained ChatGPT based chatbot capable of answering your
+                    academic questions. It is sourced and embedded from chatbase.co.</div>
+            </div>
+            <div class="info-dropdown-header" id="info-d-h-6">
+                <div class="i-d-h-text">What questions can I ask the AI Assistant?</div>
+                <img class="i-d-h-arrow" src="images/down-arrow.png">
+            </div>
+            <div class="info-dropdown-content" id="info-d-c-6">
+                <div class="info-p">The GPAi Assistant is trained to answer questions regarding academic planning, work
+                    habits, college preparation, and more!</div>
+            </div>
+        </div>
+        <div class="break horizontal-line"></div>
+        <div id="button-container">
+            <div class="info-button" id="reset-storage-button">Reset Storage</div>
+            <div class="info-button" id="download-GPAs-button">Download GPAs</div>
+        </div>
+    </div>
+    <div id="page-4-content" class="page-content">
+        <div>
+            <iframe src="https://www.chatbase.co/chatbot-iframe/AiTflzk4PAEn_Fu__hcmJ" width="585px"
+                style="height: 0px; min-height: 250px;" frameborder="0" id="chatbot_iframe"></iframe>
+        </div>
+        
+    </div>
+</body>
+
+</html>

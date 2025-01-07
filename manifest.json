@@ -1,0 +1,15 @@
+{
+    "name": "GPAi-NLC",
+    "description": "A GPA Calculator",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "icons": {
+      "16": "images/icon16.png"
+    },
+    "permissions": [
+      "storage"
+  ]
+}
